@@ -12,7 +12,7 @@ include/tipidee/rql.h
 include/tipidee/tipidee.h
 include/tipidee/uri.h
 include/tipidee/util.h
-lib/libtipidee.a
+lib/libtipidee.la
 lib/pkgconfig/libtipidee.pc
 libexec/ls.cgi
 libexec/tipidee-config-preprocess

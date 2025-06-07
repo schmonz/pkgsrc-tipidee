@@ -1,13 +1,16 @@
 # $NetBSD: Makefile,v 1.10 2025/05/26 01:37:41 schmonz Exp $
 
-DISTNAME=		tipidee-0.0.6.0
+DISTNAME=		${GITHUB_PROJECT}-${GITHUB_TAG}
+PKGNAME=		tipidee-0.0.6.0
+PKGREVISION=		2
 MANPAGES_VERSION=	0.0.5.0.1
-PKGREVISION=		1
 CATEGORIES=		www
-MASTER_SITES=		${HOMEPAGE}
+MASTER_SITES=		${MASTER_SITE_GITHUB:=skarnet/}
 MANPAGES_DIST=		tipidee-man-pages-${MANPAGES_VERSION}.tar.gz
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${MANPAGES_DIST}
+DISTFILES=		${_GITHUB_DEFAULT_DISTFILES} ${MANPAGES_DIST}
 SITES.${MANPAGES_DIST}=	-https://git.sr.ht/~flexibeast/${PKGBASE}-man-pages/archive/v${MANPAGES_VERSION}.tar.gz
+GITHUB_PROJECT=		tipidee
+GITHUB_TAG=		592c13a20f5ece4a596635c75bf096ccd3dfa6b8
 
 MAINTAINER=		schmonz@NetBSD.org
 HOMEPAGE=		https://skarnet.org/software/tipidee/
@@ -25,6 +28,8 @@ HAS_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR:Q}
 CONFIGURE_ARGS+=	--enable-pkgconfig
+CONFIGURE_ARGS+=	--enable-shared
+CONFIGURE_ARGS+=	--disable-allstatic
 
 SUBST_CLASSES+=		sysconfdir
 SUBST_STAGE.sysconfdir=	pre-configure
